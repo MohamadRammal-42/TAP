@@ -1,0 +1,448 @@
+{
+    "world": {
+        "locations": [
+            {
+                "name": "foosha",
+                "description": "A peaceful yet lively island in the East Blue.",
+                "exits": {
+                    "north": "arlong_park",
+                    "west": "loguetown",
+                    "east": "grand_line"
+                },
+                "spawns": [
+                    {
+                        "npc_type": "mr_onion",
+                        "count": 1 
+                    }
+                ],
+                "items": ["cherry_pie", "kogatana"],
+                "players": []
+            },
+            {
+                "name": "loguetown",
+                "description": "A historic port town in the East Blue.",
+                "exits": {
+                    "east": "foosha",
+                    "north": "wano"
+                },
+                "spawns": [
+                    {
+                        "npc_type": "gaimon",
+                        "count": 1 
+                    }
+                ],
+                "items": ["watermelon_juice", "cherry_pie"],
+                "players": []
+            },
+            {
+                "name": "arlong_park",
+                "description": "A fortified coastal park built as a symbol of oppression.",
+                "exits": {
+                    "north": "enies_lobby",
+                    "south": "foosha"
+                },
+                "spawns": [
+                    {
+                        "npc_type": "arlong",
+                        "count": 1
+                    },
+                    {
+                        "npc_type": "goblin",
+                        "count": 2
+                    }
+                ],
+                "items": ["cola_bottle", "igris_armor"],
+                "players": []
+            },
+            {
+                "name": "enies_lobby",
+                "description": "A massive government stronghold built over a vast waterfall.",
+                "exits": {
+                    "west": "marineford",
+                    "south": "foosha"
+                },
+                "spawns": [
+                    {
+                        "npc_type": "lucci",
+                        "count": 1
+                    },
+                    {
+                        "npc_type": "goblin",
+                        "count": 1
+                    },
+                    {
+                        "npc_type": "ice_bear",
+                        "count": 1
+                    }
+                ],
+                "items": ["cola_bottle", "igris_armor"],
+                "players": []
+            },
+            {
+                "name": "marineford",
+                "description": "A formidable naval stronghold and the heart of Marine power.",
+                "exits": {
+                    "east": "enies_lobby",
+                    "west": "god_valley",
+                    "south": "wano"
+                },
+                "spawns": [
+                    {
+                        "npc_type": "goblin",
+                        "count": 5
+                    },
+                    {
+                        "npc_type": "ice_bear",
+                        "count": 5
+                    }
+                ],
+                "items": ["meat_on_the_bone", "murakumogiri", "cola_bottle", "cola_bottle"],
+                "players": []
+            },
+            {
+                "name": "wano",
+                "description": "A secluded samurai nation shaped by tradition and ancient legend.",
+                "exits": {
+                    "north": "marineford",
+                    "west": "elbaph",
+                    "south": "loguetown"
+                },
+                "spawns": [
+                    {
+                        "npc_type": "kaido",
+                        "count": 1
+                    },
+                    {
+                        "npc_type": "ice_bear",
+                        "count": 2
+                    }
+                ],
+                "items": ["hassaikai", "watermelon_juice", "cherry_pie"],
+                "players": []
+            },
+            {
+                "name": "elbaph",
+                "description": "A legendary giant kingdom famed for its warriors and towering forests.",
+                "exits": {
+                    "north": "god_valley",
+                    "east": "wano"
+                },
+                "spawns": [
+                    {
+                        "npc_type": "goblin",
+                        "count": 5
+                    },
+                    {
+                        "npc_type": "ice_bear",
+                        "count": 8
+                    },
+                    {
+                        "npc_type": "alpha_ice_bear",
+                        "count": 1
+                    }
+                ],
+                "items": ["cola_bottle", "meat_on_the_bone", "yoru"],
+                "players": []
+            },
+            {
+                "name": "god_valley",
+                "description": "A mysterious island erased from history after a world-shaking incident.",
+                "exits": {
+                    "east": "marineford",
+                    "south": "elbaph",
+                    "west": "grand_line"
+                },
+                "spawns": [
+                    {
+                        "npc_type": "rocks",
+                        "count": 1
+                    },
+                    {
+                        "npc_type": "goblin",
+                        "count": 4
+                    }
+                ],
+                "items": ["invincibility_armor", "watermelon_juice", "cola_bottle"],
+                "players": []
+            },
+            {
+                "name": "grand_line",
+                "description": "A treacherous sea route where the world's greatest adventures unfold.",
+                "exits": {
+                    "east": "god_valley",
+                    "west": "foosha"
+                },
+                "spawns": [
+                    {
+                        "npc_type": "crocus",
+                        "count": 1 
+                    },
+                    {
+                        "npc_type": "goblin",
+                        "count": 4
+                    }
+                ],
+                "items": ["monarch_armor", "meat_on_the_bone", "cherry_pie"],
+                "players": []
+            }
+        ],
+        "items": {
+            "consumables": [
+                {
+                    "name": "cherry_pie",
+                    "description": "Teach's favorite food",
+                    "obtainable": true,
+                    "heal": 25
+                },
+                {
+                    "name": "watermelon_juice",
+                    "description": "A refreshing drink that restores energy",
+                    "obtainable": true,
+                    "heal": 15
+                },
+                {
+                    "name": "meat_on_the_bone",
+                    "description": "A huge chunk of meat loved by Luffy and restores a lot of health",
+                    "obtainable": true,
+                    "heal": 100
+                },
+                {
+                    "name": "cola_bottle",
+                    "description": "A bottle of cola that gives Franky a burst of energy",
+                    "obtainable": true,
+                    "heal": 40
+                }
+            ],
+            "weapons": [
+                {
+                    "name": "murakumogiri",
+                    "description": "Whitebeard's enormous supreme-grade weapon",
+                    "obtainable": true,
+                    "attack": 7,
+                    "durability": 7
+                },
+                {
+                    "name": "kanabo",
+                    "description": "A huge spiked club capable of delivering devastating blows",
+                    "obtainable": true,
+                    "attack": 2.5,
+                    "durability": 3
+                },
+                {
+                    "name": "enma",
+                    "description": "A legendary sword capable of drawing out its wielder's Haki",
+                    "obtainable": true,
+                    "attack": 5,
+                    "durability": 4
+                },
+                {
+                    "name": "yoru",
+                    "description": "Dracule Mihawk's legendary supreme-grade black blade",
+                    "obtainable": true,
+                    "attack": 7,
+                    "durability": 5
+                },
+                {
+                    "name": "kogatana",
+                    "description": "A small but sharp dagger commonly used as a secondary weapon",
+                    "obtainable": true,
+                    "attack": 1.5,
+                    "durability": 2
+                },
+                {
+                    "name": "hassaikai",
+                    "description": "a massive, heavy spiked club made of solid black metal with sharp spikes.",
+                    "obtainable": true,
+                    "attack": 6,
+                    "durability": 5
+                }
+            ],
+            "armors": [
+                {
+                    "name": "igris_armor",
+                    "description": "The crimson armor worn by the legendary Blood-Red Commander",
+                    "obtainable": true,
+                    "defense": 30,
+                    "durability": 1
+                },
+                {
+                    "name": "beru_carapace",
+                    "description": "A powerful natural armor formed from the hardened shell of the Ant King",
+                    "obtainable": true,
+                    "defense": 40,
+                    "durability": 6
+                },
+                {
+                    "name": "monarch_armor",
+                    "description": "An ancient and immensely powerful armor infused with overwhelming magical energy",
+                    "obtainable": true,
+                    "defense": 50,
+                    "durability": 8
+                },
+                {
+                    "name": "invincibility_armor",
+                    "description": "A powerful armor that grants total protection making its wearer invincible",
+                    "obtainable": true,
+                    "defense": 100,
+                    "durability": 1
+                }
+            ]
+        },
+        "npcs": {
+            "bosses": [
+                {
+                    "name": "goblin",
+                    "description": "Farming material.",
+                    "stats": {
+                        "hp": 20,
+                        "damage": 5
+                    },
+                    "drops": {
+                        "coins": 5,
+                        "exp": 15
+                    }
+                },
+                {
+                    "name": "arlong",
+                    "description": "The boss of Arlong Park",
+                    "stats": {
+                        "hp": 80,
+                        "damage": 25
+                    },
+                    "drops": {
+                        "coins": 50,
+                        "weapon": "enma",
+                        "exp": 100
+                    }
+                },
+                {
+                    "name": "ice_bear",
+                    "description": "Intermediate farming material.",
+                    "stats": {
+                        "hp": 60,
+                        "damage": 15
+                    },
+                    "drops": {
+                        "coins": 25,
+                        "consumable": "meat_on_the_bone",
+                        "exp": 25
+                    }
+                    
+                },
+                {
+                    "name": "alpha_ice_bear",
+                    "description": "Advanced farming material.",
+                    "stats": {
+                        "hp": 120,
+                        "damage": 35
+                    },
+                    "drops": {
+                        "coins": 60,
+                        "consumable": "meat_on_the_bone",
+                        "exp": 160
+                    }
+                },
+                {
+                    "name": "kaido",
+                    "description": "The boss of Wano",
+                    "stats": {
+                        "hp": 720,
+                        "damage": 65
+                    },
+                    "drops": {
+                        "coins": 100,
+                        "weapon": "murakumogiri",
+                        "exp": 275
+                    }
+                },
+                {
+                    "name": "lucci",
+                    "description": "The boss of Ennies Lobby",
+                    "stats": {
+                        "hp": 400,
+                        "damage": 1
+                    },
+                    "drops": {
+                        "coins": 80,
+                        "weapon": "yoru",
+                        "exp": 220
+                    }
+                },
+                {
+                    "name": "rocks",
+                    "description": "The final boss of God Valley",
+                    "stats": {
+                        "hp": 1200,
+                        "damage": 80
+                    },
+                    "drops": {
+                        "coins": 150,
+                        "exp": 320
+                    }
+                }
+            ],
+            "traders": [
+                {
+                    "name": "gaimon",
+                    "description": "The Ultimate Trader.",
+                    "stats": {
+                        "hp": 9999,
+                        "damage": 0
+                    },
+                    "quest": {
+                        "type": "eliminate",
+                        "target": "rocks",
+                        "count": 1,
+                        "status": "available"
+                    },
+                    "rewards": {
+                        "armor": "invincibility_armor"
+                    },
+                    "dialogue": "You HAVE to kill rocks, he is mad",
+                    "qc_dialogue": "phew, you saved us. Here, take this"
+                },
+                {
+                    "name": "crocus",
+                    "description": "Grand Line trader",
+                    "stats": {
+                        "hp": 9999,
+                        "damage": 0
+                    },
+                    "quest": {
+                        "type": "eliminate",
+                        "target": "goblin",
+                        "count": 3,
+                        "status": "available"
+                    },
+                    "rewards": {
+                        "coins": 20,
+                        "weapon": "kogatana"
+                    },
+                    "dialogue": "Hello Traveler, the village is in danger. We need someone brave enough to help.",
+                    "qc_dialogue": "The village is safe now, please take this as a thank you"
+                },
+                {
+                    "name": "mr_onion",
+                    "description": "Overcooked 2 guy",
+                    "stats": {
+                        "hp": 9999,
+                        "damage": 0
+                    },
+                    "quest": {
+                        "type": "fetch",
+                        "target": "coins",
+                        "count": 750,
+                        "status": "available"
+                    },
+                    "rewards": {
+                        "weapon": "murakumogiri",
+                        "armor": "monarch_armor"
+                    },
+                    "dialogue": "chouchouchouchou chouchouchou chouchou",
+                    "qc_dialogue": "chouchou chouchou chouchouchou chouchou"
+                }
+            ]
+        }
+    }
+}
+

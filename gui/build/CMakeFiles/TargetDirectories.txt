@@ -1,0 +1,4 @@
+/home/mrammal/sgoinfre/tap/gui/build/CMakeFiles/RPGClient.dir
+/home/mrammal/sgoinfre/tap/gui/build/CMakeFiles/edit_cache.dir
+/home/mrammal/sgoinfre/tap/gui/build/CMakeFiles/rebuild_cache.dir
+/home/mrammal/sgoinfre/tap/gui/build/CMakeFiles/RPGClient_autogen.dir

@@ -1,0 +1,1 @@
+Fix CHAT room "text" doesnt log anything, and doesnt send an error.

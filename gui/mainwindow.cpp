@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -204,7 +203,10 @@ void MainWindow::appendOutput(const QString &text, const QString &kind)
     else
         color = "#d4d4d4";  // default
 
-    QString escaped = text.toHtmlEscaped();
+    QString local_text = text;
+    if (local_text.startsWith('\0'))
+        local_text.remove(0, 1);
+    QString escaped = local_text.toHtmlEscaped();
     output->moveCursor(QTextCursor::End);
     output->insertHtml(QString("<span style=\"color:%1;\">%2</span><br/>").arg(color, escaped));
     output->moveCursor(QTextCursor::End);
@@ -241,7 +243,6 @@ void MainWindow::onConnectClicked()
         return;
     }
 
-    // loggedIn = false;
     buffer.clear();
     appendOutput(QString("Connecting to %1:%2 ...").arg(hostEdit->text(), portEdit->text()), "system");
     socket->connectToHost(hostEdit->text(), portEdit->text().toUShort());
@@ -249,8 +250,6 @@ void MainWindow::onConnectClicked()
 
 void MainWindow::onSocketConnected()
 {  
-    // setConnectedUi(true);
-    // appendOutput("TCP connection established.", "system");   
     sendCommand("CONNECT " + nickEdit->text().trimmed());
 }
 

@@ -3,19 +3,25 @@
 #include "vector"
 #include <algorithm>
 
+
+void log_success(Client *client, std::string message, Client *receiving_client) {
+    JsonObject log = JsonObject();
+    log["timestamp"] = timestamp();
+    log["level"] = "INFO";
+    log["event"] = message;
+    log["response"] = "OK";
+    log["player"] = client->getNickname();
+    log["group"] = client->getGroupId();
+    if (receiving_client)
+        log["receiving_client"] = receiving_client->getNickname(); 
+    printJson(log);
+    std::cout << std::endl;
+}
+
 int handle_group(Client *client, std::string line, std::vector<Client> *clients, int *group_constant) {
     if (!client->is_connected) {
         std::string error_msg = "ERR 710 UNAUTHORIZED_ACTION\r\n";
-        JsonObject log = JsonObject();
-        log["timestamp"] = timestamp();
-        log["level"] = "ERROR";
-        log["code"] = 710;
-        log["error"] = "UNAUTHORIZED_ACTION";
-        log["response"] = "ERR 710 UNAUTHORIZED_ACTION";
-        log["ip"] = client->getIp();
-        log["port"] = client->port;
-        printJson(log);
-        std::cout << std::endl;
+        log_unauthorized_action(client);
         send(client->getFd(), error_msg.c_str(), error_msg.size(), 0);
         return 0;
     }
@@ -30,16 +36,7 @@ int handle_group(Client *client, std::string line, std::vector<Client> *clients,
     std::string group_command = rest.substr(0, pos);
     if (group_command == "INVITE") {
         if (!client->in_group()) {
-            JsonObject log = JsonObject();
-            log["timestamp"] = timestamp();
-            log["level"] = "WARN";
-            log["event"] = "GROUP_INVITE";
-            log["response"] = "ERR 401 NOT_IN_GROUP";
-            log["code"] = 401;
-            log["error"] = "NOT_IN_GROUP";
-            log["player"] = client->getNickname();
-            printJson(log);
-            std::cout << std::endl;
+            log_warning(client, 401, line, "GROUP_INVITE", "ERR 401 NOT_IN_GROUP");
             std::string error_msg = "ERR 401 NOT_IN_GROUP\r\n";
             send(client->getFd(), error_msg.c_str(), error_msg.size(), 0);
             return 0;
@@ -47,15 +44,7 @@ int handle_group(Client *client, std::string line, std::vector<Client> *clients,
         std::string client_name = rest.substr(pos + 1);
         Client *receiving_client = get_client_by_nickname(client_name, (*clients));
         if (!receiving_client) {
-            JsonObject log = JsonObject();
-            log["timestamp"] = timestamp();
-            log["plyer"] = client->getNickname();
-            log["response"] = "ERR 404 PLAYER_NOT_FOUND";
-            log["level"] = "WARN";
-            log["event"] = "PLAYER_NOT_FOUND";
-            log["code"] = 404;
-            printJson(log);
-            std::cout << std::endl;
+            log_warning(client, 404, line, "PLAYER_NOT_FOUND", "ERR 404 PLAYER_NOT_FOUND");
             std::string error_msg = "ERR 404 PLAYER_NOT_FOUND\r\n";
             send(client->getFd(), error_msg.c_str(), error_msg.size(), 0);
             return 0;
@@ -70,6 +59,7 @@ int handle_group(Client *client, std::string line, std::vector<Client> *clients,
             log["code"] = 402;
             printJson(log);
             std::cout << std::endl;
+            log_warning(client, 402, line, "ALREADY_IN_GROUP", "ERR 402 ALREADY_IN_GROUP");
             std::string error_msg = "ERR 402 ALREADY_IN_GROUP\r\n";
             send(client->getFd(), error_msg.c_str(), error_msg.size(), 0);
             return 0;
@@ -80,16 +70,7 @@ int handle_group(Client *client, std::string line, std::vector<Client> *clients,
                 client->getNickname() + " " +
                 std::to_string(client->getGroupId()) + "\r\n"
             );
-            JsonObject log = JsonObject();
-            log["timestamp"] = timestamp();
-            log["level"] = "INFO";
-            log["event"] = "GROUP_INVITE";
-            log["response"] = "OK";
-            log["sender"] = client->getNickname();
-            log["receiver"] = receiving_client->getNickname();
-            log["group"] = client->getGroupId();
-            printJson(log);
-            std::cout << std::endl;
+            log_success(client, "GROUP_INVITE", receiving_client);
             send(receiving_client->getFd(), invitation.c_str(), invitation.size(), 0);
             send(client->getFd(), success.c_str(), success.size(), 0);
             return 1;
@@ -112,15 +93,7 @@ int handle_group(Client *client, std::string line, std::vector<Client> *clients,
             return 0;
         }
         else {
-            JsonObject log = JsonObject();
-            log["timestamp"] = timestamp();
-            log["level"] = "INFO";
-            log["event"] = "GROUP_LEAVE";
-            log["response"] = "OK";
-            log["player"] = client->getNickname();
-            log["group"] = client->getGroupId();
-            printJson(log);
-            std::cout << std::endl;
+            log_success(client, "GROUP_LEAVE", NULL);
             send(client->getFd(), success.c_str(), success.size(), 0);
             std::string event_message = "EVT GROUP LEAVE " + client->getNickname() + "\r\n";
             for (int k = 0; k < (*clients).size(); k++) {
@@ -164,15 +137,8 @@ int handle_group(Client *client, std::string line, std::vector<Client> *clients,
         bool group_found = false;
         for (Client c: (*clients)) {
             if (c.getGroupId() == group_id) {
-                JsonObject log = JsonObject();
-                log["timestamp"] = timestamp();
-                log["level"] = "INFO";
-                log["event"] = "GROUP_JOIN";
-                log["response"] = "OK";
-                log["player"] = client->getNickname();
-                log["group"] = client->getGroupId();
-                printJson(log);
-                std::cout << std::endl;
+                
+                log_success(client, "GROUP_JOIN", NULL);
                 client->setGroupId(group_id);
                 std::string event_message = "EVT GROUP JOIN " + client->getNickname() + "\r\n";
                 for (int k = 0; k < (*clients).size(); k++) {
@@ -228,15 +194,7 @@ int handle_group(Client *client, std::string line, std::vector<Client> *clients,
             "OK group=" +
             std::to_string(client->getGroupId()) + "\r\n"
         );
-        JsonObject log = JsonObject();
-        log["timestamp"] = timestamp();
-        log["level"] = "INFO";
-        log["event"] = "GROUP_CREATE";
-        log["response"] = "OK group=" + std::to_string(client->getGroupId());
-        log["player"] = client->getNickname();
-        log["response"] = creation_msg;
-        printJson(log);
-        std::cout << std::endl;
+        log_success(client, "OK group=" + std::to_string(client->getGroupId()), NULL);
         send(client->getFd(), creation_msg.c_str(), creation_msg.size(), 0);
     }
     else {

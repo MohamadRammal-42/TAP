@@ -48,6 +48,21 @@ void log_error(Client *client, std::string line) {
     std::cout << std::endl;
 }
 
+void log_warning(Client *client, int code, std::string line, std::string event, std::string response)
+{
+    JsonObject log = JsonObject();
+    log["timestamp"] = timestamp();
+    log["player"] = client->getNickname();
+    log["level"] = "WARN";
+    log["event"] = event;
+    log["response"] = response;
+    log["code"] = code;
+    log["command"] = line;
+    printJson(log);
+    std::cout << std::endl;
+}
+
+
 void log_error_ip(Client *client, std::string line) {
     JsonObject log = JsonObject();
     log["timestamp"] = timestamp();
@@ -62,14 +77,14 @@ void log_error_ip(Client *client, std::string line) {
     std::cout << std::endl;
 }
 
-void log_unauthorized_action(Client& client) {
+void log_unauthorized_action(Client *client) {
     JsonObject log = JsonObject();
     log["timestamp"] = timestamp();
     log["level"] = "ERROR";
     log["code"] = 710;
     log["error"] = "UNAUTHORIZED_ACTION";
-    log["ip"] = client.getIp();
-    log["port"] = client.port;
+    log["ip"] = client->getIp();
+    log["port"] = client->port;
     printJson(log);
 }
 

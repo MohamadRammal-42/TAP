@@ -23,7 +23,8 @@ std::string timestamp()
     char buffer[25];
 
     strftime(buffer, sizeof(buffer),
-             "%Y-%m-%dT%H:%M:%SZ", t);
+        "%Y-%m-%dT%H:%M:%SZ", t
+    );
 
     return std::string(buffer);
 }

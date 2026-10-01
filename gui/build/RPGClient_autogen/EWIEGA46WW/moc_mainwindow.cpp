@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.4)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.4.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -9,50 +9,72 @@
 #include <memory>
 #include "../../../mainwindow.h"
 #include <QtGui/qtextcursor.h>
-#include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.2.4. It"
+#error "This file was generated using the moc from 6.4.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
+#endif
+
+#ifndef Q_CONSTINIT
+#define Q_CONSTINIT
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
+namespace {
 struct qt_meta_stringdata_MainWindow_t {
-    const uint offsetsAndSize[24];
-    char stringdata0[160];
+    uint offsetsAndSizes[24];
+    char stringdata0[11];
+    char stringdata1[17];
+    char stringdata2[1];
+    char stringdata3[18];
+    char stringdata4[21];
+    char stringdata5[14];
+    char stringdata6[29];
+    char stringdata7[4];
+    char stringdata8[12];
+    char stringdata9[14];
+    char stringdata10[15];
+    char stringdata11[4];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
+    uint(sizeof(qt_meta_stringdata_MainWindow_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
-QT_MOC_LITERAL(0, 10), // "MainWindow"
-QT_MOC_LITERAL(11, 16), // "onConnectClicked"
-QT_MOC_LITERAL(28, 0), // ""
-QT_MOC_LITERAL(29, 17), // "onSocketConnected"
-QT_MOC_LITERAL(47, 20), // "onSocketDisconnected"
-QT_MOC_LITERAL(68, 13), // "onSocketError"
-QT_MOC_LITERAL(82, 28), // "QAbstractSocket::SocketError"
-QT_MOC_LITERAL(111, 3), // "err"
-QT_MOC_LITERAL(115, 11), // "onReadyRead"
-QT_MOC_LITERAL(127, 13), // "onSendCommand"
-QT_MOC_LITERAL(141, 14), // "onQuickCommand"
-QT_MOC_LITERAL(156, 3) // "cmd"
-
+        QT_MOC_LITERAL(0, 10),  // "MainWindow"
+        QT_MOC_LITERAL(11, 16),  // "onConnectClicked"
+        QT_MOC_LITERAL(28, 0),  // ""
+        QT_MOC_LITERAL(29, 17),  // "onSocketConnected"
+        QT_MOC_LITERAL(47, 20),  // "onSocketDisconnected"
+        QT_MOC_LITERAL(68, 13),  // "onSocketError"
+        QT_MOC_LITERAL(82, 28),  // "QAbstractSocket::SocketError"
+        QT_MOC_LITERAL(111, 3),  // "err"
+        QT_MOC_LITERAL(115, 11),  // "onReadyRead"
+        QT_MOC_LITERAL(127, 13),  // "onSendCommand"
+        QT_MOC_LITERAL(141, 14),  // "onQuickCommand"
+        QT_MOC_LITERAL(156, 3)   // "cmd"
     },
-    "MainWindow\0onConnectClicked\0\0"
-    "onSocketConnected\0onSocketDisconnected\0"
-    "onSocketError\0QAbstractSocket::SocketError\0"
-    "err\0onReadyRead\0onSendCommand\0"
-    "onQuickCommand\0cmd"
+    "MainWindow",
+    "onConnectClicked",
+    "",
+    "onSocketConnected",
+    "onSocketDisconnected",
+    "onSocketError",
+    "QAbstractSocket::SocketError",
+    "err",
+    "onReadyRead",
+    "onSendCommand",
+    "onQuickCommand",
+    "cmd"
 };
 #undef QT_MOC_LITERAL
+} // unnamed namespace
 
-static const uint qt_meta_data_MainWindow[] = {
+Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
 
  // content:
       10,       // revision
@@ -86,6 +108,35 @@ static const uint qt_meta_data_MainWindow[] = {
        0        // eod
 };
 
+Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
+    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
+    qt_meta_stringdata_MainWindow.offsetsAndSizes,
+    qt_meta_data_MainWindow,
+    qt_static_metacall,
+    nullptr,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t,
+        // Q_OBJECT / Q_GADGET
+        QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>,
+        // method 'onConnectClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onSocketConnected'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onSocketDisconnected'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onSocketError'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QAbstractSocket::SocketError, std::false_type>,
+        // method 'onReadyRead'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onSendCommand'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onQuickCommand'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+    >,
+    nullptr
+} };
+
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
@@ -114,22 +165,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         }
     }
 }
-
-const QMetaObject MainWindow::staticMetaObject = { {
-    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
-    qt_meta_stringdata_MainWindow.offsetsAndSize,
-    qt_meta_data_MainWindow,
-    qt_static_metacall,
-    nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t
-, QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QAbstractSocket::SocketError, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
-
-
->,
-    nullptr
-} };
-
 
 const QMetaObject *MainWindow::metaObject() const
 {

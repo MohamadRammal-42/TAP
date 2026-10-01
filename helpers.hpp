@@ -13,13 +13,15 @@ bool validNickname(const std::string& name);
 
 bool parseworld(const JsonValue& json);
 
-void log_unauthorized_action(Client& client);
+void log_unauthorized_action(Client *client);
 
 std::string timestamp();
 
 Locations *add_npcs(JsonValue world);
 
 void log_error(Client *client, std::string line);
+
+void log_warning(Client *client, int code, std::string line, std::string event, std::string response);
 
 void log_error_ip(Client *client, std::string line);
 

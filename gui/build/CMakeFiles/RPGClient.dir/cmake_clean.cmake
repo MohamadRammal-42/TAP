@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/RPGClient.dir/mainwindow.cpp.o.d"
   "RPGClient"
   "RPGClient.pdb"
+  "RPGClient_autogen/mocs_compilation.cpp"
+  "RPGClient_autogen/timestamp"
 )
 
 # Per-language clean rules from dependency scanning.

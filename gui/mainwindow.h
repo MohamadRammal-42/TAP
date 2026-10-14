@@ -38,22 +38,19 @@ private:
                                   const QString &command,
                                   const QString &prompt = QString());
 
-    // Connection widgets
     QLineEdit   *hostEdit   = nullptr;
     QLineEdit   *portEdit   = nullptr;
     QLineEdit   *nickEdit   = nullptr;
     QPushButton *connectButton = nullptr;
     QLabel      *statusLabel   = nullptr;
 
-    // Console widgets
     QTextEdit   *output       = nullptr;
     QLineEdit   *commandInput = nullptr;
     QPushButton *sendButton   = nullptr;
 
-    // Socket state
     QTcpSocket *socket = nullptr;
     QString     buffer;
     bool        loggedIn = false;
 };
 
-#endif // MAINWINDOW_H
+#endif

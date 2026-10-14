@@ -5,6 +5,8 @@
 #include <vector>
 
 std::string success = "OK\r\n";
+std::random_device rd;
+std::mt19937 gen(rd());
 
 Client* get_client_by_fd(int fd, std::vector<Client>& clients)
 {
@@ -130,12 +132,12 @@ void log_connection_success(Client *client) {
 Locations *add_npcs(JsonValue world) {
     Locations *npcs = new Locations();
     JsonObject npc = JsonObject();
-    for (int i = 0; i < world["world"]["locations"].size(); i++) {
+    for (size_t i = 0; i < world["world"]["locations"].size(); i++) {
         JsonValue location = world["world"]["locations"][i];
         npcs->push_back(location["name"].getString());
-        for (int j = 0; j < location["spawns"].size(); j++) {
+        for (size_t j = 0; j < location["spawns"].size(); j++) {
             for (int k = 0; k < location["spawns"][j]["count"].getDouble(); k++) {
-                for (int mosafa = 0; mosafa < world["world"]["npcs"]["bosses"].size(); mosafa++) {
+                for (size_t mosafa = 0; mosafa < world["world"]["npcs"]["bosses"].size(); mosafa++) {
                     if(world["world"]["npcs"]["bosses"][mosafa]["name"].getString() == location["spawns"][j]["npc_type"].getString()) {
                         npc["npc"] = world["world"]["npcs"]["bosses"][mosafa];
                         Boss *n = new Boss(
@@ -150,7 +152,7 @@ Locations *add_npcs(JsonValue world) {
                         break;
                     }
                 }
-                for (int mosafa = 0; mosafa < world["world"]["npcs"]["traders"].size(); mosafa++) 
+                for (size_t mosafa = 0; mosafa < world["world"]["npcs"]["traders"].size(); mosafa++) 
                 {
                     if (world["world"]["npcs"]["traders"][mosafa]["name"].getString() == location["spawns"][j]["npc_type"].getString())
                     {

@@ -51,7 +51,7 @@ int handle_quit(Client *client, std::string line, std::vector<Client> *clients, 
     close((*fds)[i].fd);
     (*fds).erase((*fds).begin() + i);
     --i;
-    for (int index = 0; index < (*clients).size(); index++) {
+    for (unsigned long index = 0; index < (*clients).size(); index++) {
         std::string event = "EVT STATS players=" + std::to_string((*clients).size()) + "\r\n";
         send((*clients)[index].getFd(), event.c_str(), event.size(), 0);
         

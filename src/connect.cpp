@@ -4,6 +4,20 @@
 #include <algorithm>
 
 int handle_connect(Client *client, std::string line, std::vector<Client> *clients, std::vector<Client> *candidate_clients, JsonValue *world) {
+    if (line.size() == 7) {
+        log_error_ip(client, line);
+        std::string error_msg = "ERR 911 INVALID_COMMAND\r\n";
+        send(client->getFd(), error_msg.c_str(), error_msg.size(), 0);
+        return 0;
+    }
+    if (line.substr(0, 8) == "CONNECT ") {
+        if (line.size() <= 8) {
+            log_error_ip(client, line);
+            std::string error_msg = "ERR 911 INVALID_COMMAND\r\n";
+            send(client->getFd(), error_msg.c_str(), error_msg.size(), 0);
+            return 0;
+        }
+    }
     if (!client->is_connected) {
         bool name_available = true;
         std::string name = line.substr(8, line.size() - 1);
@@ -32,7 +46,7 @@ int handle_connect(Client *client, std::string line, std::vector<Client> *client
                 it->setNickname(name);
                 it->is_connected = true;
                 it->set_current_room((*world)["world"]["locations"][0]["name"].getString());
-                for (int i = 0; i < (*world)["world"]["locations"].size(); i++) {
+                for (unsigned long i = 0; i < (*world)["world"]["locations"].size(); i++) {
                     if ((*world)["world"]["locations"][i]["name"].getString() == it->get_current_room()) {
                         (*world)["world"]["locations"][i]["players"].push_back(JsonValue(it->getNickname()));
                         break;
@@ -43,7 +57,7 @@ int handle_connect(Client *client, std::string line, std::vector<Client> *client
                 (*candidate_clients).erase(it);
                 std::string welcome_msg = "OK connected\r\n";
                 send(client->getFd(), welcome_msg.c_str(), welcome_msg.size(), 0);
-                for (int index = 0; index < (*clients).size(); index++) {
+                for (unsigned long index = 0; index < (*clients).size(); index++) {
                     std::string event = "EVT STATS players=" + std::to_string((*clients).size()) + "\r\n";
                     send((*clients)[index].getFd(), event.c_str(), event.size(), 0);
                 }

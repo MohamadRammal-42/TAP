@@ -1,7 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/RPGClient_autogen"
   "RPGClient_autogen/mocs_compilation.cpp"
-  "RPGClient_autogen/timestamp"
 )
 
 # Per-language clean rules from dependency scanning.
